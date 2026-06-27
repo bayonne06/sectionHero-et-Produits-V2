@@ -1,5 +1,371 @@
-*{
+/* ============================================================
+   VARIABLES GLOBALES (Custom Properties)
+   Couleurs, polices et fonds utilisés dans tout le projet
+   ============================================================ */
+:root {
+    --couleur_logo: #0d2040;              /* Couleur sombre du texte logo */
+    --couleur_h1: #001536;               /* Couleur du titre principal h1 */
+    --bouton_nav: #0066d9;               /* Bleu des boutons et bordures nav */
+    --couleur_recherche: #0071eb;        /* Bleu vif du bouton Rechercher et du fieldset */
+    --couleur_input: #616f88;            /* Gris des bordures d'articles et inputs */
+    --font_principal: "Oswald", sans-serif;       /* Police des liens, nav, labels */
+    --font_secondaire: "Roboto Slab", serif;      /* Police des titres h1, h2 */
+    --bg_color: #f5f7fb;                 /* Fond gris clair des sections */
+    --bg_color2: #ffffff;               /* Fond blanc (header, articles, inputs) */
+    --bg_icon_user: #e6f2fe;            /* Fond bleu pâle du bouton profil */
+    --bg_icon_logo: linear-gradient(    /* Dégradé décoratif (non utilisé visuellement) */
+        90deg,
+        rgba(31, 168, 222, 1) 0%,
+        rgba(252, 247, 247, 1) 50%,
+        rgba(54, 54, 54, 1) 100%
+    );
+}
+
+
+/* ============================================================
+   RESET DE BASE
+   Supprime marges et paddings par défaut, active border-box
+   ============================================================ */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+/* Fond blanc sur toute la page */
+html, body {
+    background: var(--bg_color2);
+}
+
+
+/* ============================================================
+   EN-TÊTE (HEADER)
+   Barre de navigation horizontale avec logo et menus
+   ============================================================ */
+header {
+    background: var(--bg_color2);
+    display: flex;
+    justify-content: space-between;    /* Logo à gauche, navs à droite */
+    align-items: center;
+    padding: 1rem 2.5rem;
+}
+
+/* Sections avec fond gris clair pour les distinguer du header */
+section {
+    background: var(--bg_color);
+}
+
+/* Conteneur <nav> en flex horizontal centré */
+header nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+/* Liste de navigation horizontale sans puces */
+header nav ul {
+    display: flex;
+    align-items: center;
+}
+
+/* Items de navigation : espacement à droite */
+header nav ul li {
+    list-style: none;
+    margin: 0 20px 0 0;
+}
+
+
+/* ============================================================
+   TYPOGRAPHIE & LIENS
+   ============================================================ */
+
+/* Style par défaut de tous les liens : bleu, sans soulignement */
+a {
+    text-decoration: none;
+    color: var(--couleur_recherche);
+    font-family: var(--font_principal);
+    padding: 5px 10px;
+    border-radius: 16px;
+}
+
+/* Bouton "Proposer un trajet" : bordure arrondie visible */
+.proposer {
+    border: 2px solid var(--bouton_nav);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    gap: 8px;
+}
+
+/* Effet survol du bouton "Proposer un trajet" */
+.proposer:hover {
+    background: var(--bg_color);
+}
+
+/* Bouton icône profil : cercle bleu pâle */
+.person {
+    background: var(--bg_icon_user);
+    color: var(--bouton_nav);
+    border: none;
+    border-radius: 50%;
+}
+
+/* (Règle inutilisée — sélecteur trop spécifique / inversé) */
+button .person {
+    padding: 25px;
+    background: #0066d9;
+}
+
+/* Logo BlaBlaCar : flex avec icône et texte alignés */
+.p_logo {
+    color: black;
+    gap: 8px;
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font_principal);
+    font-weight: bold;
+    font-size: 25px;
+}
+
+/* Icône du logo en bleu */
+.p_logo span {
+    color: #0066d9;
+}
+
+
+/* ============================================================
+   SECTION HÉRO (#main)
+   Titre accrocheur à gauche, image à droite
+   ============================================================ */
+#main {
+    display: flex;
+}
+
+/* Conteneur interne : titre et image côte à côte */
+#main div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px 40px;
+}
+
+/* Image héro avec coins arrondis */
+#main img {
+    border-radius: 16px;
+}
+
+/* Titre principal grand format */
+h1 {
+    font-family: var(--font_secondaire);
+    font-size: 50px;
+}
+
+
+/* ============================================================
+   FORMULAIRE DE RECHERCHE DE TRAJET
+   Fieldset horizontal + bouton Rechercher accolé
+   ============================================================ */
+
+/* Formulaire en flex : fieldset occupe 90% + bouton à droite */
+form {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Champs en ligne dans un encadré bleu arrondi à gauche */
+fieldset {
+    display: flex;
+    flex-direction: row;
+    border: 3px solid var(--couleur_recherche);
+    padding: 0 20px;
+    border-radius: 16px 0 0 16px;     /* Arrondi uniquement à gauche */
+    width: 90%;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    margin: 0 0 20px 35px;
+    background: var(--bg_color2);
+}
+
+/* Chaque groupe label + input en colonne */
+fieldset div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;                      /* Empêche le débordement en flex */
+}
+
+/* Labels et inputs : même police, sans bordure native */
+input, label {
+    font-family: var(--font_principal);
+    border: none;
+    outline: none;
+}
+
+/* Padding interne des champs de saisie */
+input {
+    padding: 10px 15px;
+}
+
+/* Fond gris au survol d'un groupe input */
+#input_group:hover {
+    background: var(--bg_color);
+}
+
+/* Fond gris au survol direct des inputs */
+input[type="text"]:hover,
+input[type="date"]:hover,
+input[type="number"]:hover {
+    background: var(--bg_color);
+}
+
+/* Curseur pointer pour les champs date et nombre */
+input[type="date"]:hover,
+input[type="number"]:hover {
+    cursor: pointer;
+}
+
+/* Checkbox "Afficher les hébergements" : marges latérales */
+.check {
+    margin: 0 35px 50px 35px;
+}
+
+/* Bouton Rechercher : bleu, arrondi à droite, accolé au fieldset */
+form div button {
+    background: var(--couleur_recherche);
+    color: var(--bg_color);
+    padding: 18px 20px;
+    font-family: var(--font_secondaire);
+    font-size: 30px;
+    margin: 0 35px 20px 0;
+    border: 3px solid var(--couleur_recherche);
+    border-radius: 0 16px 16px 0;     /* Arrondi uniquement à droite */
+}
+
+
+/* ============================================================
+   SECTION CARTES TARIFAIRES (Bus / Covoiturage / Train)
+   ============================================================ */
+
+/* Espacement interne du contenu de chaque carte */
+#group {
+    margin: 0 20px;
+}
+
+/* Grille horizontale des trois cartes */
+#article {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 35px 20px 35px;
+}
+
+/* Style de chaque carte : fond blanc, bordure grise, coins arrondis */
+article {
+    background: var(--bg_color2);
+    border: 1px solid var(--couleur_input);
+    border-radius: 8px;
+    font-family: var(--font_principal);
+}
+
+/* Image en haut de la carte : coins arrondis en haut seulement */
+article img {
+    border-radius: 8px 8px 0 0;
+}
+
+/* Ligne départ → arrivée : icône + texte alignés */
+#depart_arrive {
+    display: flex;
+    align-items: center;
+}
+
+/* Taille par défaut du texte départ/arrivée */
+#depart_arrive span {
+    font-size: 20px;
+}
+
+/* Grande icône de rotation verticale (↕) */
+#depart_arrive .height {
+    font-size: 50px;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+}
+
+/* Ligne prix minimum : texte et bouton flèche côte à côte */
+#montant {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 20px 10px 20px;
+    border-bottom: 1px solid var(--couleur_input);    /* Séparateur */
+}
+
+/* Paragraphes dans le groupe carte */
+#group p {
+    font-size: 20px;
+    margin-left: 20px;
+}
+
+/* Prix affiché en grand */
+#montant span {
+    font-size: 25px;
+}
+
+/* Bouton flèche circulaire bleu */
+#montant button {
+    border: 1px solid var(--couleur_recherche);
+    background: var(--couleur_recherche);
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+/* Tous les boutons : curseur pointer */
+button {
+    cursor: pointer;
+}
+
+/* Icône flèche dans le bouton : blanche */
+#montant button span {
+    color: var(--bg_color2);
+    font-size: 25px;
+}
+
+/* Ligne d'arrêt : nom du lieu + prix + chevron alignés */
+#parking {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 20px;
+    cursor: pointer;
+}
+
+/* Fond gris clair au survol d'un arrêt */
+#parking:hover {
+    background: var(--bg_color);
+}
+
+/* Sous-conteneur prix + chevron dans chaque arrêt */
+#parking div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Titre de section centré (ex: "Le meilleur (prix) en bus") */
+h2 {
+    font-family: var(--font_secondaire);
+    text-align: center;
+    font-size: 30px;
+}
+
+/* Survol des liens de navigation */
+li :hover {
+    background: var(--bg_color);
+}
+
+/* Icône de langue cliquable */
+.langue {
+    cursor: pointer;
 }

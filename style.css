@@ -251,7 +251,7 @@ form div button {
    ============================================================ */
 
 /* Espacement interne du contenu de chaque carte */
-#group {
+.group {
     margin: 0 20px;
 }
 
@@ -295,7 +295,7 @@ article img {
 }
 
 /* Ligne prix minimum : texte et bouton flèche côte à côte */
-#montant {
+.montant {
     display: flex;
     justify-content: space-between;
     margin: 0 20px 10px 20px;
@@ -303,18 +303,18 @@ article img {
 }
 
 /* Paragraphes dans le groupe carte */
-#group p {
+.group p {
     font-size: 20px;
     margin-left: 20px;
 }
 
 /* Prix affiché en grand */
-#montant span {
+.montant span {
     font-size: 25px;
 }
 
 /* Bouton flèche circulaire bleu */
-#montant button {
+.montant button {
     border: 1px solid var(--couleur_recherche);
     background: var(--couleur_recherche);
     border-radius: 50%;
@@ -327,13 +327,13 @@ button {
 }
 
 /* Icône flèche dans le bouton : blanche */
-#montant button span {
+.montant button span {
     color: var(--bg_color2);
     font-size: 25px;
 }
 
 /* Ligne d'arrêt : nom du lieu + prix + chevron alignés */
-#parking {
+.parking {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -342,12 +342,12 @@ button {
 }
 
 /* Fond gris clair au survol d'un arrêt */
-#parking:hover {
+.parking:hover {
     background: var(--bg_color);
 }
 
 /* Sous-conteneur prix + chevron dans chaque arrêt */
-#parking div {
+.parking div {
     display: flex;
     align-items: center;
     gap: 5px;

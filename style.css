@@ -211,7 +211,7 @@ input {
 }
 
 /* Fond gris au survol d'un groupe input */
-#inputg:hover {
+.inputg:hover {
     background: var(--bg_color);
 }
 
@@ -276,18 +276,18 @@ article img {
 }
 
 /* Ligne départ → arrivée : icône + texte alignés */
-#departa {
+.departa {
     display: flex;
     align-items: center;
 }
 
 /* Taille par défaut du texte départ/arrivée */
-#departa span {
+.departa span {
     font-size: 20px;
 }
 
 /* Grande icône de rotation verticale (↕) */
-#departa .height {
+.departa .height {
     font-size: 50px;
     justify-content: center;
     align-items: center;
